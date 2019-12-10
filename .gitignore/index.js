@@ -27,4 +27,3 @@ fs.readdir('./Events/', (error, f) => {
 });
 
 bot.login(process.env.TOKEN);
-// Tu crois vraiment que tu va voler mon token ? espèce de méchant va !
