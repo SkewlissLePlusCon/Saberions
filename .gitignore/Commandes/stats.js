@@ -23,7 +23,7 @@ module.exports.run = (client, message, args) => {
                 },
                 {
                     name: 'Jeu :',
-                    value: membre.user.presence.game ? membre.user.presence.game.name : 'Aucun jeu'
+                    value: membre.user.presence.game ? membre.user.presence.game.name : 'Cet utilisateur ne joue à aucun jeu'
                 },
                 {
                     name: 'Rejoin le :',
