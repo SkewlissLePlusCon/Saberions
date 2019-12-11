@@ -1,7 +1,15 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-client.commands = new Discord.Collection();
-const fs = require('fs');
+const Discord = require("discord.js");
+
+var bot = new Discord.Client();
+
+bot.on("ready", function() {
+    bot.user.setGame("|Dev By [V8] GForce|");
+    console.log("Le bot a bien ete connecte")
+});
+
+const PREFIX = "!";
+
+const EVERYONE = "@";
 
 fs.readdir('./Commandes/', (error, f) => {
     if (error) { return console.error(error); }
