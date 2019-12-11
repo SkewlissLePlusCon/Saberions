@@ -1,23 +1,7 @@
-const Discord = require("discord.js");
-
-var bot = new Discord.Client();
-
-bot.on("ready", function() {
-    bot.user.setGame("| Dev by GForceV8 |");
-    console.log("Le bot a bien ete connecte")
-});
-
-const PREFIX = "*";
-
-const EVERYONE = "@";
-
-bot.on("guildMemberRemove", function(member) {
-    member.guild.channels.find("name", "bienvenue").sendMessage(member.toString() + " viens de quitté le serveur, bye bye !" + " :x:");
-});
-
-bot.on("guildMemberAdd", function(member) {
-    member.guild.channels.find("name", "bienvenue").sendMessage(member.toString() + " Bienvenue sur le serveur **V8-WorlD** ! :white_check_mark:");
-});
+const Discord = require('discord.js');
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
+const fs = require('fs');
 
 fs.readdir('./Commandes/', (error, f) => {
     if (error) { return console.error(error); }
@@ -42,5 +26,4 @@ fs.readdir('./Events/', (error, f) => {
         });
 });
 
-
-	bot.login(process.env.TOKEN);
+client.login(process.env.TOKEN);
