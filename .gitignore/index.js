@@ -26,6 +26,7 @@ fs.readdir('./Events/', (error, f) => {
         });
 });
 
+
 const DiscordAntiSpam = require("discord-anti-spam");
 const AntiSpam = new DiscordAntiSpam({
   warnThreshold: 3, 
