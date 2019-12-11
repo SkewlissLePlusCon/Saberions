@@ -34,4 +34,5 @@ fs.readdir('./Events/', (error, f) => {
         });
 });
 
-bot.login(process.env.TOKEN);
+
+    bot.login(process.env.TOKEN);
