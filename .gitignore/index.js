@@ -62,7 +62,7 @@ client.on("message", (msg) => {
 
 client.on("guildMemberAdd", user =>{
   let joinEmbed = new Discord.RichEmbed()
-  .setColor("#f41111")
+  .setColor("#52f411")
   .setAuthor(user.user.username, user.user.displayAvatarURL)
   .setDescription(":grin: Bienvenue" + user + " sur notre serveur **" + user.guild.name + "** !")
   .setFooter("Saberions Game | By Skewliss", 'https://imgur.com/fMg1noM.png')
