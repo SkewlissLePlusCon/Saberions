@@ -61,11 +61,21 @@ client.on("message", (msg) => {
 });
 
 client.on("guildMemberAdd", user =>{
-  user.guild.channels.get("548348879226142722").send("**Bienvenue** " + user + " sur notre serveur discord **" + user.guild.name + "**, Amuse toi bien !")
-} )
+  let joinEmbed = new Discord.RichEmbed()
+  .setColor("#f41111")
+  .setAuthor(user.user.username, user.user.displayAvatarURL)
+  .setDescription(":grin: Bienvenue" + user + " sur notre serveur **" + user.guild.name + "** !")
+  .setFooter("Saberions Game | By Skewliss", 'https://imgur.com/fMg1noM.png')
+  user.guild.channels.get("655351281862443018").send(joinEmbed)
+});
 
 client.on("guildMemberRemove", user =>{
-  user.guild.channels.get("548348879226142722").send("**Salut** " + user + " **!** Reviens quand tu veut sur le serveur **" + user.guild.name + "** !")
-})
+  let leaveEmbed = new Discord.RichEmbed()
+  .setColor("#f41111")
+  .setAuthor(user.user.username, user.user.displayAvatarURL)
+  .setDescription(":cry: Sniff..." + user + " a quitté notre serveur **" + user.guild.name + "** !")
+  .setFooter("Saberions Game | Amuse toi bien !", 'https://imgur.com/fMg1noM.png')
+  user.guild.channels.get("655351281862443018").send(leaveEmbed)
+});
 
 client.login(process.env.TOKEN);
