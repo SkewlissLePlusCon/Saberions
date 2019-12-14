@@ -60,4 +60,12 @@ client.on("message", (msg) => {
   AntiSpam.message(msg);
 });
 
+client.on("guildMemberAdd", user =>{
+  user.guild.channels.get("548348879226142722").send("**Bienvenue** " + user + " sur notre serveur discord **" + user.guild.name + "**, Amuse toi bien !")
+} )
+
+client.on("guildMemberRemove", user =>{
+  user.guild.channels.get("548348879226142722").send("**Salut** " + user + " **!** Reviens quand tu veut sur le serveur **" + user.guild.name + "** !")
+})
+
 client.login(process.env.TOKEN);
