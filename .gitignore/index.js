@@ -74,7 +74,7 @@ client.on("guildMemberRemove", user =>{
   .setColor("#f41111")
   .setAuthor(user.user.username, user.user.displayAvatarURL)
   .setDescription(":cry: Sniff..." + user + " a quitté notre serveur **" + user.guild.name + "** !")
-  .setFooter("Saberions Game | Amuse toi bien !", 'https://i.imgur.com/UxNctHU.png')
+  .setFooter("Saberions Game | By Skewliss", 'https://i.imgur.com/UxNctHU.png')
   user.guild.channels.get("548348879226142722").send(leaveEmbed)
 });
 
