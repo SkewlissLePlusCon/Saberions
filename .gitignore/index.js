@@ -2,6 +2,11 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const fs = require('fs');
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('database.json');
+const db = low(adapter);
+const prefix = '!';
 
 fs.readdir('./Commandes/', (error, f) => {
     if (error) { return console.error(error); }
@@ -77,5 +82,35 @@ client.on("guildMemberRemove", user =>{
   .setFooter("Saberions Game | By Skewliss", 'https://i.imgur.com/UxNctHU.png')
   user.guild.channels.get("548348879226142722").send(leaveEmbed)
 });
+
+client.on('message', message => {
+    
+  var msgauthor = message.author.id
+
+  if(message.author.bot)return;
+
+  if(!db.get("xp").find({user : msgauthor}).value()){
+      db.get("xp").push({user : msgauthor, xp: 1}).write();
+  }else{
+      var userxpdb = db.get("xp").filter({user : msgauthor}).find("xp").value();
+      console.log(userxpdb)
+      var userxp = Object.values(userxpdb)
+      console.log(userxp)
+      console.log(`Nombre d'xp: ${userxp[1]}`)
+
+      db.get("xp").find({user: msgauthor}).assign({user: msgauthor, xp: userxp[1] += 1}).write();
+
+      if(message.content === prefix + "message"){
+          var xp = db.get("xp").filter({user: msgauthor}).find('xp').value()
+          var xpfinal = Object.values(xp);
+          var xp_embed = new Discord.RichEmbed()
+              .setTitle(`Stats de : ${message.author.username}`)
+              .setColor('#F4D03F')
+              .addField("Nombre de message", `:crossed_swords: Tu as actuellement envoyer **${xpfinal[1]} messages** !`)
+              .setFooter("Saberions Game | By Skewliss", 'https://i.imgur.com/UxNctHU.png')
+          message.channel.send({embed : xp_embed})
+      }
+  }
+})
 
 client.login(process.env.TOKEN);
