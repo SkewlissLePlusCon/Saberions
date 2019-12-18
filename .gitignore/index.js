@@ -64,7 +64,7 @@ client.on("guildMemberAdd", user =>{
   let joinEmbed = new Discord.RichEmbed()
   .setColor("#52f411")
   .setAuthor(user.user.username, user.user.displayAvatarURL)
-  .setDescription(":grin: Bienvenue" + user + " sur notre serveur **" + user.guild.name + "** !")
+  .setDescription(":grin: Bienvenue " + user + " sur notre serveur **" + user.guild.name + "** !")
   .setFooter("Saberions Game | By Skewliss", 'https://i.imgur.com/UxNctHU.png')
   user.guild.channels.get("548348879226142722").send(joinEmbed)
 });
@@ -73,7 +73,7 @@ client.on("guildMemberRemove", user =>{
   let leaveEmbed = new Discord.RichEmbed()
   .setColor("#f41111")
   .setAuthor(user.user.username, user.user.displayAvatarURL)
-  .setDescription(":cry: Sniff..." + user + " a quitté notre serveur **" + user.guild.name + "** !")
+  .setDescription(":cry: Sniff... " + user + " a quitté notre serveur **" + user.guild.name + "** !")
   .setFooter("Saberions Game | By Skewliss", 'https://i.imgur.com/UxNctHU.png')
   user.guild.channels.get("548348879226142722").send(leaveEmbed)
 });
